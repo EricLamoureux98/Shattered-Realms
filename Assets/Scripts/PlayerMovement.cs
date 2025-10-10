@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    [SerializeField] float movementSpeed;
+    [SerializeField] float moveSpeed;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * movementSpeed;
+        rb.linearVelocity = moveInput * moveSpeed;
 
         // Checks direction player is facing in contrast to movement direction
         if (moveInput.x > 0 && transform.localScale.x < 0 || moveInput.x < 0 && transform.localScale.x > 0)
@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        anim.SetFloat("horizontal", Mathf.Abs(moveInput.x)); //MathF.Abs turns all # into positive
-        anim.SetFloat("vertical", Mathf.Abs(moveInput.y)); //Required to animate in both directions
+        anim.SetFloat("horizontal", Mathf.Abs(moveInput.x)); //MathF.Abs turns all numbers into positive
+        anim.SetFloat("vertical", Mathf.Abs(moveInput.y)); //Required to run animate in both directions
     }
 
     void Flip()
