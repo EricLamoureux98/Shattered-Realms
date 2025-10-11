@@ -133,7 +133,9 @@ GameObject:
   - component: {fileID: 478111310}
   - component: {fileID: 478111314}
   - component: {fileID: 478111316}
+  - component: {fileID: 478111318}
   - component: {fileID: 478111315}
+  - component: {fileID: 478111317}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -432,6 +434,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &478111317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478111309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17809dd5f1c37843a0100d9a2ccea21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 3
+--- !u!114 &478111318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478111309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba9b5b8b66b87c47bd9dc7c152b9a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisions
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1080,7 @@ GameObject:
   - component: {fileID: 1129145006}
   m_Layer: 0
   m_Name: Goblin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
