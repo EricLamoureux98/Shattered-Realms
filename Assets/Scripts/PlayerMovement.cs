@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Animator anim;
     [SerializeField] float moveSpeed;
     [SerializeField] Transform aim;
 
+    private Animator anim;
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private int facingDirection = 1;
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
