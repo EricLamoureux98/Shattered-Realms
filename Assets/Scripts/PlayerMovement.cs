@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] float moveSpeed;
+    [SerializeField] Transform aim;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -24,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
+
+        // Aim direction while walking
+        Vector3 aimDirection = Vector3.right * moveInput.x + Vector3.up * moveInput.y;
+        aim.rotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
+
 
         anim.SetFloat("horizontal", Mathf.Abs(moveInput.x)); //MathF.Abs turns all numbers into positive
         anim.SetFloat("vertical", Mathf.Abs(moveInput.y)); //Required to run animate in both directions

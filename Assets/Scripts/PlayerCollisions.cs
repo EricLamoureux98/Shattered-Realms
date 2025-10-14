@@ -4,18 +4,18 @@ public class PlayerCollisions : MonoBehaviour
 {
 
 
-    private PlayerHealth playerHealth;
+    private Health health;
 
     void Start()
     {
-        playerHealth = GetComponent<PlayerHealth>();
+        health = GetComponent<Health>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            playerHealth.UpdateHealth(1);
+            health.UpdateHealth(1);
         }
     }
 }

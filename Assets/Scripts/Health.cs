@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealth;
 
@@ -13,12 +13,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealth(int amount)
     {
-        if (currentHealth > 0)
-        {
-            currentHealth -= amount;
-            Debug.Log("Health left: " + currentHealth);
-        }
-        else if (currentHealth <= 0)
+        currentHealth -= amount;
+        Debug.Log("Health left: " + currentHealth);
+
+        if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
         }
