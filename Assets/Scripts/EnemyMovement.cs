@@ -23,15 +23,16 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (enemyState == EnemyState.Chasing)
+        if (enemyState == EnemyState.Chasing && playerPosition != null)
         {
             ChasePlayer();
-        }
 
-        // Checks direction of player compared to enemy to determin movement direction
-        if (playerPosition != null && playerPosition.position.x > transform.position.x && facingDirection == -1 || playerPosition.position.x < transform.position.x && facingDirection == 1)
-        {
-            Flip();
+            // Checks direction of player compared to enemy to determin movement direction
+            if (playerPosition.position.x > transform.position.x && facingDirection == -1 ||
+            playerPosition.position.x < transform.position.x && facingDirection == 1)
+            {
+                Flip();
+            }
         }
     }
 
