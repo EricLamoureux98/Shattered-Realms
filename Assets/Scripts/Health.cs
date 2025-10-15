@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     public void UpdateHealth(int amount)
     {
-        currentHealth -= amount;
+        currentHealth += amount;
         Debug.Log("Health left: " + currentHealth);
 
         if (currentHealth <= 0)

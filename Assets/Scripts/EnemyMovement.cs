@@ -3,12 +3,19 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    [SerializeField] float attackRange;
+    [SerializeField] float attackCooldown = 2f;
+    [SerializeField] float playerDetectRange = 5f;
+    [SerializeField] Transform detectionPoint;
+    [SerializeField] LayerMask playerLayer;
 
-    private Animator anim;
-    private Rigidbody2D rb;
-    private Transform playerPosition;
+    private float attackCooldownTimer;
     private int facingDirection = 1;
     private EnemyState enemyState;
+
+    private Transform playerPosition;
+    private Animator anim;
+    private Rigidbody2D rb;
 
     void Awake()
     {
@@ -21,44 +28,68 @@ public class EnemyMovement : MonoBehaviour
         ChangeState(EnemyState.Idle);
     }
 
+    void Update()
+    {
+        CheckForPlayer();
+
+        if(attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
+        }
+    }
+
     void FixedUpdate()
     {
         if (enemyState == EnemyState.Chasing && playerPosition != null)
         {
             ChasePlayer();
-
-            // Checks direction of player compared to enemy to determin movement direction
-            if (playerPosition.position.x > transform.position.x && facingDirection == -1 ||
-            playerPosition.position.x < transform.position.x && facingDirection == 1)
-            {
-                Flip();
-            }
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (playerPosition == null)
-            {
-                playerPosition = collision.gameObject.transform;
-            }
-            ChangeState(EnemyState.Chasing);
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        else if (enemyState == EnemyState.Attacking && playerPosition != null)
         {
             rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    // Instead of TriggerEnter
+    void CheckForPlayer()
+    {
+        //Creates a circle around detectionPoint with a radius of playerDetectRange
+        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
+
+        // If player is detected
+        if (hits.Length > 0)
+        {
+            // Player position is first hit
+            playerPosition = hits[0].transform;
+
+            // If player is in attack range and cooldown is ready
+            if (Vector2.Distance(transform.position, playerPosition.position) <= attackRange && attackCooldownTimer <= 0)
+            {
+                attackCooldownTimer = attackCooldown;
+                ChangeState(EnemyState.Attacking);
+            }
+            else if (Vector2.Distance(transform.position, playerPosition.position) > attackRange)
+            {
+                rb.linearVelocity = Vector2.zero;
+                ChangeState(EnemyState.Chasing);
+            }
+        }
+        // If nothing is detected, then be idle
+        else
+        {
             ChangeState(EnemyState.Idle);
         }
     }
 
     void ChasePlayer()
     {
+        // Checks direction of player compared to enemy to determin movement direction
+        if (playerPosition.position.x > transform.position.x && facingDirection == -1 ||
+            playerPosition.position.x < transform.position.x && facingDirection == 1)
+        {
+            Flip();
+        }
+
         Vector2 direction = (playerPosition.transform.position - transform.position).normalized;
         rb.linearVelocity = direction * moveSpeed;
     }
@@ -80,6 +111,10 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetBool("isChasing", false);
         }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            anim.SetBool("isAttacking", false);
+        }
 
         //Update current state
         enemyState = newState;
@@ -93,11 +128,22 @@ public class EnemyMovement : MonoBehaviour
         {
             anim.SetBool("isChasing", true);
         }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            anim.SetBool("isAttacking", true);
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(detectionPoint.position, playerDetectRange);
     }
 }
 
 public enum EnemyState
 {
     Idle,
-    Chasing
+    Chasing,
+    Attacking
 }

@@ -15,7 +15,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            health.UpdateHealth(1);
+            //health.UpdateHealth(1);
         }
     }
 }
