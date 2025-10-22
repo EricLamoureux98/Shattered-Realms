@@ -63,12 +63,12 @@ public class EnemyMovement : MonoBehaviour
             playerPosition = hits[0].transform;
 
             // If player is in attack range and cooldown is ready
-            if (Vector2.Distance(transform.position, playerPosition.position) <= attackRange && attackCooldownTimer <= 0)
+            if (Vector2.Distance(transform.position, playerPosition.position) < attackRange && attackCooldownTimer <= 0)
             {
                 attackCooldownTimer = attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, playerPosition.position) > attackRange)
+            else if (Vector2.Distance(transform.position, playerPosition.position) > attackRange && enemyState != EnemyState.Attacking)
             {
                 rb.linearVelocity = Vector2.zero;
                 ChangeState(EnemyState.Chasing);

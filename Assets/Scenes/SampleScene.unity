@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 3
-  attackRange: 1.2
+  attackRange: 0.8
   attackCooldown: 1
   playerDetectRange: 4
   detectionPoint: {fileID: 452734220}
@@ -2172,6 +2172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCombat
   damage: 1
   weaponRange: 1
+  knockbackForce: 10
+  stunTime: 0.15
   attackPoint: {fileID: 132033218}
   playerLayer:
     serializedVersion: 2
