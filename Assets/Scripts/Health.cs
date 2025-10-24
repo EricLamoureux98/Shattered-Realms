@@ -14,7 +14,11 @@ public class Health : MonoBehaviour
     public void UpdateHealth(int amount)
     {
         currentHealth += amount;
-        Debug.Log("Health left: " + currentHealth);
+
+        // Prevents your currentHealth from going above maxHealth or below 0
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        Debug.Log(gameObject.name + "Health left: " + currentHealth);
 
         if (currentHealth <= 0)
         {

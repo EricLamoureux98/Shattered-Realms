@@ -21,4 +21,10 @@ public class EnemyCombat : MonoBehaviour
             hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockbackForce, stunTime);
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, weaponRange);
+    }
 }

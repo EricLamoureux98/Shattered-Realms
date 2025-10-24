@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] Transform aim;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -13,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     private int facingDirection = 1;
     private bool isKnockedBack;
 
+    private PlayerCombat playerCombat;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerCombat = GetComponent<PlayerCombat>();
     }
 
     void FixedUpdate()
@@ -30,11 +32,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 Flip();
             }
-
-            // Aim direction while walking
-            Vector3 aimDirection = Vector3.right * moveInput.x + Vector3.up * moveInput.y;
-            aim.rotation = Quaternion.LookRotation(Vector3.forward, aimDirection);
-
 
             anim.SetFloat("horizontal", Mathf.Abs(moveInput.x)); //MathF.Abs turns all numbers into positive
             anim.SetFloat("vertical", Mathf.Abs(moveInput.y)); //Required to run animate in both directions
@@ -65,5 +62,13 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerCombat.Attack();
+        }
     }
 }
