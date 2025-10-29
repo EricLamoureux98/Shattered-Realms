@@ -1350,6 +1350,8 @@ MonoBehaviour:
   weaponRange: 0.6
   damage: 1
   attackCooldown: 1
+  knockbackForce: 20
+  stunTime: 0.15
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1810,6 +1812,7 @@ GameObject:
   - component: {fileID: 1129145005}
   - component: {fileID: 1129145007}
   - component: {fileID: 1129145008}
+  - component: {fileID: 1129145009}
   m_Layer: 8
   m_Name: Goblin
   m_TagString: Enemy
@@ -2067,6 +2070,19 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1129145009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129144999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7454c21d54b8064cab97ad633b4dbc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
+  enemyMovement: {fileID: 1129145005}
 --- !u!1 &1341347948
 GameObject:
   m_ObjectHideFlags: 0
