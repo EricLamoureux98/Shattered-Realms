@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 478111316}
   - component: {fileID: 478111318}
   - component: {fileID: 478111315}
-  - component: {fileID: 478111317}
+  - component: {fileID: 478111320}
   - component: {fileID: 478111319}
   m_Layer: 7
   m_Name: Player
@@ -1286,7 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f994e8de794445a60e68995d5b4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 6
 --- !u!95 &478111316
 Animator:
   serializedVersion: 7
@@ -1309,19 +1308,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &478111317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478111309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17809dd5f1c37843a0100d9a2ccea21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 999
 --- !u!114 &478111318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,14 +1333,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   attackPoint: {fileID: 534486662}
-  weaponRange: 0.6
-  damage: 1
-  attackCooldown: 1
-  knockbackForce: 20
-  stunTime: 0.15
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &478111320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478111309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e59b52e19aa5c46814d0d95e40dac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1714,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -8.996105, y: 3.1201906}
+  m_Offset: {x: -8.996105, y: 3.1084847}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1731,7 +1724,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9600601, y: 0.27106643}
+  m_Size: {x: 1.9600601, y: 0.15267849}
   m_EdgeRadius: 0
 --- !u!114 &825594867
 MonoBehaviour:
@@ -2065,7 +2058,7 @@ MonoBehaviour:
   damage: 1
   weaponRange: 0.6
   knockbackForce: 10
-  stunTime: 0.15
+  knockbackTime: 0
   attackPoint: {fileID: 132033218}
   playerLayer:
     serializedVersion: 2
@@ -21833,6 +21826,59 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &1834220415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1834220416}
+  - component: {fileID: 1834220417}
+  m_Layer: 0
+  m_Name: StatsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1834220416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834220415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1834220417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834220415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f636c9dc68ef849843ad6fe045e824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatsManager
+  damage: 1
+  weaponRange: 0.6
+  knockbackForce: 20
+  knockbackTime: 0.15
+  stunTime: 0.15
+  attackCooldown: 1
+  speed: 6
+  maxHealth: 999
+  currentHealth: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -21841,3 +21887,4 @@ SceneRoots:
   - {fileID: 894650936}
   - {fileID: 478111313}
   - {fileID: 1129145002}
+  - {fileID: 1834220416}

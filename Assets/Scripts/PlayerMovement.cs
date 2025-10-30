@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-
     private Animator anim;
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -25,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isKnockedBack == false)
         {
-            rb.linearVelocity = moveInput * moveSpeed;
+            rb.linearVelocity = moveInput * StatsManager.Instance.speed;
 
             // Checks direction player is facing in contrast to movement direction
             if (moveInput.x > 0 && transform.localScale.x < 0 || moveInput.x < 0 && transform.localScale.x > 0)
