@@ -3,6 +3,11 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealth;
+    [SerializeField] int expReward = 3;
+
+    // Observer pattern
+    public delegate void EnemyDefeated(int exp);
+    public static event EnemyDefeated OnEnemyDefeated;
 
     private int currentHealth;
 
@@ -18,11 +23,10 @@ public class Health : MonoBehaviour
         // Prevents your currentHealth from going above maxHealth or below 0
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-        Debug.Log(gameObject.name + "Health left: " + currentHealth);
-
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            OnEnemyDefeated(expReward);
+            Destroy(gameObject);
         }
     }
 }
