@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.035, y: -23.139}
-  m_SizeDelta: {x: 36.071, y: 12.722}
+  m_AnchoredPosition: {x: 13.035, y: -22.0379}
+  m_SizeDelta: {x: 46.071, y: 14.9243}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7652096490694132149
 CanvasRenderer:
@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20, y: 5}
-  m_SizeDelta: {x: 40, y: 10}
+  m_AnchoredPosition: {x: -24.1042, y: 7.2022}
+  m_SizeDelta: {x: 48.2084, y: 14.4045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2359478723297058760
 CanvasRenderer:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/5
+  m_text: locked
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.94
-  m_fontSizeBase: 20.94
+  m_fontSize: 18.53
+  m_fontSizeBase: 18.53
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 4526646299946849129}
   - component: {fileID: 2291671543030694299}
   - component: {fileID: 6436175164045857582}
+  - component: {fileID: 3870873489118562751}
   m_Layer: 0
   m_Name: SkillButton
   m_TagString: Untagged
@@ -334,6 +335,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3870873489118562751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6057226459527695564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f7cdabc09a23b4fbf709d272619a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 0}
+  currentLevel: 0
+  isUnlocked: 0
+  skillIcon: {fileID: 994627105750240798}
+  skillButton: {fileID: 6436175164045857582}
+  skillLevelText: {fileID: 6460527051496402723}
 --- !u!1 &8044347085703277819
 GameObject:
   m_ObjectHideFlags: 0
