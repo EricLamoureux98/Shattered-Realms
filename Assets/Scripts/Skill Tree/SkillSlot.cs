@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.Collections.Generic;
 
 public class SkillSlot : MonoBehaviour
 {
-    
+    public List<SkillSlot> prerequisiteSkillSlots;
     public SkillSO skillSO;
 
     public int currentLevel;
@@ -13,6 +15,9 @@ public class SkillSlot : MonoBehaviour
     public Image skillIcon;
     public Button skillButton;
     public TMP_Text skillLevelText;
+
+    public static event Action<SkillSlot> OnAbilityPointSpent;
+    public static event Action<SkillSlot> OnSkillMaxed;
 
     // Runs anytime changes are made to a scripts variable
     void OnValidate()
@@ -28,8 +33,33 @@ public class SkillSlot : MonoBehaviour
         if (isUnlocked && currentLevel < skillSO.maxLevel)
         {
             currentLevel++;
+            OnAbilityPointSpent?.Invoke(this);
+
+            if (currentLevel >= skillSO.maxLevel)
+            {
+                OnSkillMaxed?.Invoke(this);
+            }
+
             UpdateUI();
         }
+    }
+
+    public bool CanUnlockSkill()
+    {
+        foreach (SkillSlot slot in prerequisiteSkillSlots)
+        {
+            if (!slot.isUnlocked || slot.currentLevel < slot.skillSO.maxLevel)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void Unlock()
+    {
+        isUnlocked = true;
+        UpdateUI();
     }
 
     void UpdateUI()
