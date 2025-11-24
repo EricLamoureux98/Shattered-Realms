@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && playerCombat.enabled == true)
         {
             playerCombat.Attack();
         }

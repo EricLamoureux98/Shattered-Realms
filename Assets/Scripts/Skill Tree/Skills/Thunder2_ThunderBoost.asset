@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3d881bee8f50f4989a29d00979db63, type: 3}
   m_Name: Thunder2_ThunderBoost
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
+  skillName: Thunder Boost
   maxLevel: 1
   skillIcon: {fileID: 21300000, guid: d7c4facdd476ee34ea2ac36fd161f6d2, type: 3}

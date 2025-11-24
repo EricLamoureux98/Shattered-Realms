@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class ExpManager : MonoBehaviour
     int level;
     int currentExp;
     int expToLevel = 10;
+
+    public static event Action <int> OnLevelUp;
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class ExpManager : MonoBehaviour
         level++;
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowthMultiplier);
+        OnLevelUp?.Invoke(1);
     }
     
     void UpdateUI()

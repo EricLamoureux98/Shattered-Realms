@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae3d881bee8f50f4989a29d00979db63, type: 3}
-  m_Name: Ice4_IceBoost
+  m_Name: CombatUnlock
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: Ice Boost
+  skillName: Sword Slash
   maxLevel: 1
-  skillIcon: {fileID: 21300000, guid: 7c29335cc0b52274e8d126121409db62, type: 3}
+  skillIcon: {fileID: 21300000, guid: 4eb3cd272ddcfdc41b6ed51c05d0206d, type: 3}

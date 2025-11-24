@@ -95,6 +95,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Skills",
+                    "type": "Button",
+                    "id": "adcebec9-a266-40ff-a21e-101bddaa57d2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -475,11 +484,22 @@
                 {
                     "name": "",
                     "id": "f9f878a0-5495-4dbd-b18e-37c9e857a916",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Toggle Stats",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da4ea3a9-e891-4bf0-9214-c2e07b20b42c",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Toggle Skills",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3d881bee8f50f4989a29d00979db63, type: 3}
   m_Name: Ability_DeathBringer
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
+  skillName: Death Bringer
   maxLevel: 1
   skillIcon: {fileID: 21300000, guid: 73b918f1b9910b744b7183fee5b72e82, type: 3}
