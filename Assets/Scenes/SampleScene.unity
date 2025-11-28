@@ -2478,6 +2478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBow
   firepoint: {fileID: 931309182}
   arrowPrefab: {fileID: 1270895041475440502, guid: c0d62742068057a4c993a2938099b5c5, type: 3}
+  shootCooldown: 0.25
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

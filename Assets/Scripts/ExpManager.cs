@@ -23,13 +23,13 @@ public class ExpManager : MonoBehaviour
     // += adds GainExperience to the event's subscriber list
     void OnEnable()
     {
-        Health.OnEnemyDefeated += GainExperience;
+        EnemyHealth.OnEnemyDefeated += GainExperience;
     }
 
     // -= removes it when the object is disabled (prevents memory leaks)
     void OnDisable()
     {
-        Health.OnEnemyDefeated -= GainExperience;
+        EnemyHealth.OnEnemyDefeated -= GainExperience;
     }
 
     public void GainExperience(int amount)

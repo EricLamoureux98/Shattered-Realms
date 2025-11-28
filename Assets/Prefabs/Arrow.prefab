@@ -178,5 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2430ad336339974b974a5acad4fa99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arrow
-  lifeSpan: 2
-  speed: 3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  lifeSpan: 4
+  speed: 8
+  damage: 2
+  knockbackForce: 10
+  knockbackTime: 0.5
+  stunTime: 1
+  direction: {x: 1, y: 0}

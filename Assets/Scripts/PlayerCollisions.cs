@@ -4,11 +4,11 @@ public class PlayerCollisions : MonoBehaviour
 {
 
 
-    private Health health;
+    private EnemyHealth health;
 
     void Start()
     {
-        health = GetComponent<Health>();
+        health = GetComponent<EnemyHealth>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
