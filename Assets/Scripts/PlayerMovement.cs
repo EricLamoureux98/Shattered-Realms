@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerCombat playerCombat;
 
+    public bool isShooting;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isShooting) rb.linearVelocity = Vector2.zero;
         if (isKnockedBack == false)
         {
             rb.linearVelocity = moveInput * StatsManager.Instance.speed;

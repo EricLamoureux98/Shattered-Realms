@@ -2064,6 +2064,7 @@ GameObject:
   - component: {fileID: 478111320}
   - component: {fileID: 478111319}
   - component: {fileID: 478111321}
+  - component: {fileID: 478111322}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2383,6 +2384,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8caca6f9-9a0c-43ce-9a1c-0925779743d0
     m_ActionName: 'Player/Shoot[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 478111322}
+        m_TargetAssemblyTypeName: PlayerChangeEquipment, Assembly-CSharp
+        m_MethodName: ChangeEquipment
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e35fd0b3-0004-479a-99ce-aa54bf23fbc1
+    m_ActionName: 'Player/Change Equipment[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2400,6 +2417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f994e8de794445a60e68995d5b4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  isShooting: 0
 --- !u!95 &478111316
 Animator:
   serializedVersion: 7
@@ -2441,7 +2459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478111309}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9075fa69dc47c640b8ce8bea86b3eaf, type: 3}
   m_Name: 
@@ -2471,14 +2489,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478111309}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1ebcc93a721de49937e0e498492f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBow
+  playerMovement: {fileID: 478111315}
   firepoint: {fileID: 931309182}
   arrowPrefab: {fileID: 1270895041475440502, guid: c0d62742068057a4c993a2938099b5c5, type: 3}
   shootCooldown: 0.25
+--- !u!114 &478111322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478111309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ba035b728853a4aab24d3fe060d6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerChangeEquipment
+  combat: {fileID: 478111319}
+  bow: {fileID: 478111321}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8102,7 +8135,7 @@ GameObject:
   - component: {fileID: 1538229268}
   - component: {fileID: 1538229267}
   - component: {fileID: 1538229269}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision-Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27000,7 +27033,7 @@ GameObject:
   - component: {fileID: 1708956190}
   - component: {fileID: 1708956189}
   - component: {fileID: 1708956191}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collision-High
   m_TagString: Untagged
   m_Icon: {fileID: 0}

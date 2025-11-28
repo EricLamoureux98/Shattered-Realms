@@ -8,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
     Animator anim;
     float timer;
 
-    void Start()
+    void OnEnable()
     {
         anim = GetComponent<Animator>();
     }
