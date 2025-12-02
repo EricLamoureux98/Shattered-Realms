@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Loot : MonoBehaviour
@@ -8,6 +9,7 @@ public class Loot : MonoBehaviour
     [SerializeField]Animator anim;
 
     [SerializeField] int quantity;
+    public static event Action<ItemSO, int> OnItemLooted;
 
     void OnValidate()
     {
@@ -22,6 +24,7 @@ public class Loot : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             anim.Play("Loot_Pickup");
+            OnItemLooted?.Invoke(itemSO, quantity);
             Destroy(gameObject, 0.5f);
         }
     }
