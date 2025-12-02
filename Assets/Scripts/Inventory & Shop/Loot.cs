@@ -16,4 +16,13 @@ public class Loot : MonoBehaviour
         sr.sprite = itemSO.icon;
         this.name = itemSO.itemName;
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            anim.Play("Loot_Pickup");
+            Destroy(gameObject, 0.5f);
+        }
+    }
 }
