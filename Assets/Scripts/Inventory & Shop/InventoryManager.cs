@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] TMP_Text goldText;
     
     public InventorySlot[] itemSlots;
+    public UseItem useItem;
     public int gold;
     
 
@@ -46,9 +47,23 @@ public class InventoryManager : MonoBehaviour
                     slot.quantity = quantity;
                     slot.UpdateUI();
                     return;
-                }
-                
+                }                
             }
         }
+    }
+
+    public void UseItem(InventorySlot slot)
+    {
+        if (slot.itemSO != null && slot.quantity >= 0)
+        {
+            useItem.ApplyItemEffects(slot.itemSO);
+
+            slot.quantity--;
+            if (slot.quantity <= 0)
+            {
+                slot.itemSO = null;
+            }
+            slot.UpdateUI();
+        }  
     }
 }

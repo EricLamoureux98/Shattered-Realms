@@ -37,6 +37,7 @@ public class StatsUI : MonoBehaviour
             UpdateAllStats();
             Time.timeScale = 1;
             statsCanvas.alpha = 0;
+            statsCanvas.blocksRaycasts = false;
             statsOpen = false;
         }
         else if (context.performed && !statsOpen)
@@ -44,6 +45,7 @@ public class StatsUI : MonoBehaviour
             UpdateAllStats();
             Time.timeScale = 0;
             statsCanvas.alpha = 1;
+            statsCanvas.blocksRaycasts = true;
             statsOpen = true;
         }
     }

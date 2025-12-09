@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Mushroom
   itemDescription: Its a mushroom
-  icon: {fileID: 21300000, guid: 4c3100c8fbe68d6478d9884df350f060, type: 3}
+  icon: {fileID: 8793915729297761979, guid: 4c3100c8fbe68d6478d9884df350f060, type: 3}
   isGold: 0
   currentHealth: 5
   maxHealth: 0
